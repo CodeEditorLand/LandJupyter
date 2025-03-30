@@ -1,8 +1,30 @@
 {
 	"name": "jupyter",
 	"displayName": "Jupyter",
+	"version": "0.0.1",
+	"private": false,
 	"description": "Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more.",
+	"keywords": [
+		"codeeditorland",
+		"land",
+		"playform"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandJupyter#readme",
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandJupyter/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandJupyter.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
 	"qna": "https://github.com/microsoft/vscode-jupyter/discussions",
+	"author": {
+		"name": "Source 🖋️ Open 👐🏻",
+		"email": "Source/Open@Editor.Land",
+		"url": "HTTPS://Editor.Land"
+	},
+	"type": "module",
 	"main": "./dist/extension.node.proxy.js",
 	"browser": "./dist/extension.web.bundle.js",
 	"scripts": {
@@ -32,6 +54,7 @@
 		"preprePublishNonBundle": "gulp clean",
 		"prePublishNonBundle": "concurrently npm:compile-out npm:esbuild-all",
 		"preTestJediLSP": "node ./out/test/languageServers/jedi/lspSetup.js",
+		"prepublishOnly": "Build 'Source/**/*.ts'",
 		"printTestResults": "gulp printTestResults",
 		"setup-precommit-hook": "husky install",
 		"startJupyterServer": "node build/preDebugWebTest.js",
@@ -2113,6 +2136,7 @@
 		"@actions/core": "1.11.1",
 		"@actions/github": "6.0.0",
 		"@actions/glob": "0.5.0",
+		"@playform/build": "0.2.1",
 		"@sinonjs/fake-timers": "14.0.0",
 		"@types/ansi-regex": "5.0.4",
 		"@types/chai": "5.2.1",
@@ -2219,6 +2243,9 @@
 		"ms-toolsai.vscode-jupyter-cell-tags",
 		"ms-toolsai.vscode-jupyter-slideshow"
 	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"icon": "icon.png",
 	"galleryBanner": {
 		"color": "#ffffff",

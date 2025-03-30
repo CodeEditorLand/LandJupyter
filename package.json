@@ -2075,7 +2075,7 @@
 		"fs-extra": "11.3.0",
 		"glob": "11.0.1",
 		"iconv-lite": "0.6.3",
-		"inversify": "7.2.0",
+		"inversify": "7.3.0",
 		"isomorphic-ws": "5.0.0",
 		"jquery": "3.7.1",
 		"jsonc-parser": "3.3.1",

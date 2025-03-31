@@ -1,12 +1,13 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { Memento } from 'vscode';
-import { ProductNames } from './productNames';
-import { Product } from './types';
-import { PythonEnvironment } from '../../pythonEnvironments/info';
-import { isResource } from '../../common/utils/misc';
-import { getInterpreterHash } from '../../pythonEnvironments/info/interpreter';
+import { Memento } from "vscode";
+
+import { isResource } from "../../common/utils/misc";
+import { PythonEnvironment } from "../../pythonEnvironments/info";
+import { getInterpreterHash } from "../../pythonEnvironments/info/interpreter";
+import { ProductNames } from "./productNames";
+import { Product } from "./types";
 
 const interpretersIntoWhichIPyKernelWasInstalledInSession = new Set<string>();
 /**
@@ -14,34 +15,38 @@ const interpretersIntoWhichIPyKernelWasInstalledInSession = new Set<string>();
  * (don't care whether it was successful or not).
  */
 export async function trackPackageInstalledIntoInterpreter(
-    memento: Memento,
-    product: Product,
-    interpreter: PythonEnvironment
+	memento: Memento,
+	product: Product,
+	interpreter: PythonEnvironment,
 ) {
-    if (isResource(interpreter)) {
-        return;
-    }
-    interpretersIntoWhichIPyKernelWasInstalledInSession.add(interpreter.id);
-    const key = `${await getInterpreterHash(interpreter)}#${ProductNames.get(product)}`;
-    await memento.update(key, true);
+	if (isResource(interpreter)) {
+		return;
+	}
+	interpretersIntoWhichIPyKernelWasInstalledInSession.add(interpreter.id);
+	const key = `${await getInterpreterHash(interpreter)}#${ProductNames.get(product)}`;
+	await memento.update(key, true);
 }
 export async function clearInstalledIntoInterpreterMemento(
-    memento: Memento,
-    product: Product,
-    interpreterPath: PythonEnvironment
+	memento: Memento,
+	product: Product,
+	interpreterPath: PythonEnvironment,
 ) {
-    const key = `${await getInterpreterHash(interpreterPath)}#${ProductNames.get(product)}`;
-    await memento.update(key, undefined);
+	const key = `${await getInterpreterHash(interpreterPath)}#${ProductNames.get(product)}`;
+	await memento.update(key, undefined);
 }
 export async function isModulePresentInEnvironmentCache(
-    memento: Memento,
-    product: Product,
-    interpreter: PythonEnvironment
+	memento: Memento,
+	product: Product,
+	interpreter: PythonEnvironment,
 ) {
-    const key = `${await getInterpreterHash(interpreter)}#${ProductNames.get(product)}`;
-    return memento.get<boolean>(key, false);
+	const key = `${await getInterpreterHash(interpreter)}#${ProductNames.get(product)}`;
+	return memento.get<boolean>(key, false);
 }
 
-export function wasIPyKernelInstalAttempted(interpreter: PythonEnvironment): boolean {
-    return interpretersIntoWhichIPyKernelWasInstalledInSession.has(interpreter.id);
+export function wasIPyKernelInstalAttempted(
+	interpreter: PythonEnvironment,
+): boolean {
+	return interpretersIntoWhichIPyKernelWasInstalledInSession.has(
+		interpreter.id,
+	);
 }

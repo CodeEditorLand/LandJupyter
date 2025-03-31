@@ -21,6 +21,6 @@ export enum EnvironmentType {
  * Details about a Python environment.
  */
 export interface PythonEnvironment {
-    id: string;
-    uri: Uri;
-};
+	id: string;
+	uri: Uri;
+}

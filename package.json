@@ -2136,7 +2136,7 @@
 		"@actions/core": "1.11.1",
 		"@actions/github": "6.0.0",
 		"@actions/glob": "0.5.0",
-		"@playform/build": "0.2.1",
+		"@playform/build": "0.2.2",
 		"@sinonjs/fake-timers": "14.0.0",
 		"@types/ansi-regex": "5.0.4",
 		"@types/chai": "5.2.1",
